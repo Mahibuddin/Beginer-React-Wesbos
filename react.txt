@@ -1,0 +1,41 @@
+
+
+		== React Components and State ==
+
+
+
+	## Components = Components are the building blocks in React. 
+	   Type of component : a) Class based components. b) Function based components
+
+	## Props = an input (or multiple inputs) commonly known as props. 
+
+	## State =
+
+	## Stateless ReactJS Component
+
+	## Stateful ReactJS Component
+
+
+
+
+				== Props ==
+
+	|| In ReactJs we use props to send data to components.
+
+	|| In ReactJs every components is treated as a pure javascript function.
+
+	|| In ReactJs props are equivalent to parameters of a pure javascript function.
+
+	|| Props are immutable. Because these are developed in the concept of pure functions. In pure 	   	   functions we cannot change the date of parameters. So, also cannot change the data of a 	   	   prop in ReactJs.
+
+
+
+				== State ==
+
+	|| State is like a data store to the ReactJs component. It is mostly used to update the 	   component when user performed some action like - 'clicking button', 'typing some text', 	   'passing some key' etc...
+
+	|| React.Component is the base class for all class based ReactJs components. Whenever a class 	   inherits the class React.Components it's constructor will automatically assigns attribute 	   state to the class with initial value is set to null. we can change it by overriding the 	   method constructor.
+
+	|| In many cases we need to update the state. To do that we have to use the method setState and 	   directly assigning like "this.state = {'key' : 'value'}" is strictly prohibited.
+
+	
