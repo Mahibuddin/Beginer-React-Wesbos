@@ -316,11 +316,9 @@ header.top h3:after {
   width: 130%;
   height: 1px;
   content: '';
-  top: 5px;
   margin-left: -15%;
 }
 header.top h3:after {
-  top: auto;
   bottom: 7px;
 }
 .catch-of-the-day {
@@ -666,3 +664,7 @@ button[type=submit]{
   font-size: 20px;
   font-weight: 700;
 }
+
+.center{margin: auto;}
+.center button[type=submit]{border-radius: 0; width: 100%;}
+.center button:after, input[type=submit]:after{border-radius: 0;}
