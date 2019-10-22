@@ -294,7 +294,7 @@ header.top h1 .ofThe .of {
   right: -0.5rem;
 }
 header.top h3 {
-  margin: 0;
+  margin: 12px 0;
   font-size: 2rem;
   color: #f5a623;
   position: relative;
@@ -667,4 +667,5 @@ button[type=submit]{
 
 .center{margin: auto;}
 .center button[type=submit]{border-radius: 0; width: 100%;}
+.menu-fish button:after, input[type=submit]:after{border-radius: 0;}
 .center button:after, input[type=submit]:after{border-radius: 0;}
