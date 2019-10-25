@@ -15,7 +15,7 @@ import { formatPrice } from '../helpers'
 
         return <li key={key}>
             <span>{count}lbs {fish.name}</span>
-            <span className="price">{count * fish.price}</span>
+            <span className="price">{formatPrice(count * fish.price)}</span>
         </li>
     }
     render() {
@@ -30,7 +30,7 @@ import { formatPrice } from '../helpers'
             return prevTotal;
         }, 0);
         return (
-            <div classNameorder-wrape>
+            <div className='order-wrape'>
                 <h2>Your Order</h2>
                 <ul className="order">
                     {orderIds.map(this.renderOrder)}
