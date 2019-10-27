@@ -1,4 +1,5 @@
 import React  from 'react'
+// import PropTypes from 'prop-types';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -18,6 +19,8 @@ class App extends React.Component {
     loadSamples = this.loadSamples.bind(this);
     addToOrder = this.addToOrder.bind(this);
     updateFish = this.updateFish.bind(this);
+    removeFish = this.removeFish.bind(this);
+    //removeFromOrder = this.removeFromOrder.bind(this);
 
     
     componentWillMount() {
@@ -60,8 +63,14 @@ class App extends React.Component {
 
     updateFish(key, updatedFish){
         const fishes = {...this.state.fishes};
-        fishes [key] = updatedFish;
+        fishes[key] = updatedFish;
         this.setState({fishes})
+    }
+
+    removeFish(key){
+        const fishes = {...this.state.fishes};
+        fishes[key] = null;
+        this.setState({fishes});
     }
 
     loadSamples(){
@@ -69,6 +78,7 @@ class App extends React.Component {
             fishes: sampleFishes
         });
     }
+   
 
     addToOrder(key){
         // take a copy of our state
@@ -77,6 +87,12 @@ class App extends React.Component {
         order[key] = order[key] + 1 || 1;
         // update our order
         this.setState({order})
+    }
+
+    removeFromOrder = (key) => {
+        const order = {...this.state.order};
+        delete order[key];
+        this.setState({order});
     }
 
     render() {
@@ -97,19 +113,30 @@ class App extends React.Component {
                     <Order 
                         fishes={this.state.fishes} 
                         order={this.state.order} 
-                        params={this.props.params}
+                        // params={this.props.match.params}
+                        removeFromOrder={this.removeFromOrder}
                         />
                     <Inventory 
                         addFish = {this.addFish} 
                         loadSamples = {this.loadSamples} 
                         fishes = {this.state.fishes}
                         updateFish = {this.updateFish} 
+                        removeFish = {this.removeFish} 
+                        removeFromOrder = {this.removeFromOrder} 
+                        storeId = {this.props.match.params.storeId}
                     />
                 </div> 
             </div>
         ) 
     }
 }
+
+// App.propTypes = {
+//      params: PropTypes.object.isRequired
+//     // prams: PropTypes.object
+// }
+
+
 export default App;
 
 
