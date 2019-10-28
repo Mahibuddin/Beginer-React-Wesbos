@@ -517,8 +517,8 @@ ul.order li span.count span {
 button,
 input[type=submit] {
   text-transform: uppercase;
-  background: none;
-  border: 1px solid #000;
+  background: #71b5da;
+  border: 1px solid #71b5da;
   font-weight: 600;
   font-size: 1.5rem;
   font-family: 'Open Sans';
@@ -526,11 +526,14 @@ input[type=submit] {
   transition: all 0.2s;
   position: relative;
   z-index: 2;
+  padding: 15px;
+  color: #fff;
 }
 button[disabled],
 input[type=submit][disabled] {
   color: #d12028;
   background: #fff;
+  padding: 0;
   border-color: #d12028;
   -webkit-transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
           transform: rotate(-10deg) scale(2) translateX(50%) translateY(-50%);
@@ -549,7 +552,7 @@ input[type=submit]:after {
   content: '';
   z-index: -1;
   display: block;
-  background: #000;
+  background: #05a4f9;
   position: absolute;
   width: 100%;
   height: 0;

@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
 
 class AddFishForm extends Component {
 
@@ -11,7 +12,7 @@ class AddFishForm extends Component {
             name: this.name.value,
             price: this.price.value,
             status: this.status.value,
-            des: this.des.value,
+            desc: this.des.value,
             image: this.image.value,
         }
         this.props.addFish(fish);
@@ -19,6 +20,31 @@ class AddFishForm extends Component {
         
         
     }
+
+    // Upload Image Files
+    uploadFile = async e => {
+        // grab the targeted files
+        const files = e.target.files;
+        // JavaScript FormData
+        const data = new FormData();
+        data.append("file", files[0]);
+        data.append("upload_preset", "sickfits");
+        // connecting with Cloudinary API
+        const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dwmcbei5m/image/upload",
+        {
+            method: "POST",
+            body: data
+        }
+        );
+        // fetching data from cloudinary and convert it to JSON
+        const file = await res.json();
+        console.log(file);
+        // Update State
+        this.setState({
+        image: file.secure_url
+        });
+    };
 
     render() {
         return (
@@ -29,8 +55,10 @@ class AddFishForm extends Component {
                     <option value="available">Fresh!</option>
                     <option value="unavailable">Sold Out!</option>
                 </select>
-                <textarea ref={(input) => this.des = input} placeholder="Fish Des"></textarea>
-                <input ref={(input) => this.image = input} type="text" placeholder="Fish Image"/>
+                <textarea ref={(input) => this.des = input} placeholder="Fish Desc"></textarea>
+                <input ref={(input) => this.image = input} type="file" name="file" className="file-upload" data-cloudinary-field="image"
+                data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}" placeholder="Fish Image"/>
+
                 <div className="center">
                     <button type="submit">+ Add Item</button>
                 </div>
